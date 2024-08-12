@@ -94,7 +94,8 @@
         }
 
         main {
-            padding: calc(var(--spacing-xl) * 2) 0 var(--spacing-xl);
+            padding-top: 100px; /* Increased to account for fixed header */
+            padding-bottom: var(--spacing-xl);
         }
 
         footer {
@@ -142,7 +143,7 @@
 
         .social-links a {
             color: var(--text-light);
-            font-size: 1.5rem;
+            font-size: 1rem;
             transition: color var(--transition-fast);
         }
 
@@ -210,7 +211,7 @@
         /* Image Carousel Styles */
         .carousel-container {
             width: 100%;
-            max-width: 800px;
+            max-width: 600px; /* Reduced from 800px */
             margin: var(--spacing-xl) auto;
             position: relative;
             overflow: hidden;
@@ -259,8 +260,6 @@
             <div class="nav-links">
                 <a href="index.html#home">Home</a>
                 <a href="index.html#games">Our Games</a>
-               <!--  <a href="index.html#blog">Blog</a>
-                <a href="index.html#about">About Us</a> -->
             </div>
         </nav>
     </header>
@@ -274,7 +273,7 @@
         </div>
     </main>
 
-     <footer>
+    <footer>
         <div class="container footer-content">
             <div>
                 <img src="assets/logo/2.png" alt="Walkman Lab" class="footer-logo" style="align-self: flex-start">
@@ -284,14 +283,6 @@
                     <a href="https://instagram.com/walkmanlab" aria-label="Instagram">Instagram</a>
                 </div>
             </div>
-            <!-- <div class="footer-links"> -->
-              <!--   <h3>Company</h3>
-                <ul>
-                    <li><a href="#home">Home</a></li> -->
-                    <!-- <li><a href="#about">About</a></li> -->
-                    <!-- <li><a href="#blog">Blog</a></li> -->
-                <!-- </ul> -->
-            <!-- </div> -->
         </div>
     </footer>
 
@@ -325,28 +316,34 @@
                                     <strong>Age:</strong> ${game.ageRange}
                                 </div>
                             </div>
-                            <a href="${game.playLink}" class="play-button">Play Now</a>
-                            <div class="rulebook">
-                                <h2>Rulebook</h2>
-                                ${game.rulebook.map(rule => `
-                                    <h3>${rule.section}</h3>
-                                    <p>${rule.content}</p>
-                                `).join('')}
-                            </div>
+                            ${game.playLink ? `<a href="${game.playLink}" class="play-button">Play Now</a>` : ''}
+                            ${game.rulebook && game.rulebook.length > 0 ? `
+                                <div class="rulebook">
+                                    <h2>Rulebook</h2>
+                                    ${game.rulebook.map(rule => `
+                                        <h3>${rule.section}</h3>
+                                        <p>${rule.content}</p>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
                         </div>
                     `;
                     document.getElementById('gameDetails').innerHTML = gameDetailsHtml;
 
                     // Set up image carousel
-                    const carouselHtml = `
-                        <div class="carousel">
-                            ${game.imageGallery.map(img => `<img src="${img}" alt="${game.title} gameplay">`).join('')}
-                        </div>
-                        <button class="carousel-button prev">&lt;</button>
-                        <button class="carousel-button next">&gt;</button>
-                    `;
-                    document.getElementById('imageCarousel').innerHTML = carouselHtml;
-                    setupCarousel();
+                    if (game.imageGallery && game.imageGallery.length > 0) {
+                        const carouselHtml = `
+                            <div class="carousel">
+                                ${game.imageGallery.map(img => `<img src="${img}" alt="${game.title} gameplay">`).join('')}
+                            </div>
+                            <button class="carousel-button prev">&lt;</button>
+                            <button class="carousel-button next">&gt;</button>
+                        `;
+                        document.getElementById('imageCarousel').innerHTML = carouselHtml;
+                        setupCarousel();
+                    } else {
+                        document.getElementById('imageCarousel').style.display = 'none';
+                    }
                 } else {
                     document.getElementById('gameDetails').innerHTML = '<p>Game not found</p>';
                 }
