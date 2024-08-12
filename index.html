@@ -321,6 +321,14 @@
                 text-align: center;
             }
         }
+
+        .game-card {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .game-card:hover {
+            transform: translateY(-10px);
+        }
     </style>
 </head>
 <body>
@@ -346,8 +354,8 @@
         </section>
 
         <section id="games" class="container">
-            <div class="games-grid">
-                <div class="game-card">
+            <div id="gamesGrid" class="games-grid">
+                <!-- <div class="game-card">
                     <img src="assets/bank-bailout/main.png" alt="Bank Bailout Bonanza" class="game-image">
                     <div class="game-info">
                         <h2 class="game-title">Bank Bailout Bonanza</h2>
@@ -386,7 +394,9 @@
                         <p class="game-description">Discover "Wisdom Quest," an innovative RPG built on Gather Town. Transform education into an exciting adventure. Explore a rich digital campus, uncover hidden pathways, and solve puzzles.</p>
                         <a href="#" class="view-more">View More</a>
                     </div>
-                </div>
+                </div> -->
+
+
             </div>
         </section>
     </main>
@@ -421,5 +431,32 @@
             </div>
         </div>
     </footer>
+
+    <!-- Keep the existing footer and subscribe section -->
+
+    <script>
+        async function loadGames() {
+            try {
+                const response = await fetch('games.json');
+                const data = await response.json();
+                const gamesHtml = data.games.map(game => `
+                    <div class="game-card" onclick="location.href='game-details.html?id=${game.id}'">
+                        <img src="${game.image}" alt="${game.title}" class="game-image">
+                        <div class="game-info">
+                            <h2 class="game-title">${game.title}</h2>
+                            <p class="game-description">${game.shortDescription}</p>
+                            <a href="game-details.html?id=${game.id}" class="view-more">View More</a>
+                        </div>
+                    </div>
+                `).join('');
+                document.getElementById('gamesGrid').innerHTML = gamesHtml;
+            } catch (error) {
+                console.error('Error loading games:', error);
+                document.getElementById('gamesGrid').innerHTML = '<p>Error loading games</p>';
+            }
+        }
+
+        loadGames();
+    </script>
 </body>
 </html>

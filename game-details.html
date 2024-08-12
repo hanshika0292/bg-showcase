@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walkman Lab Games - Game Details</title>
+    <style>
+        /* Include the styles from the main page here */
+        /* Additional styles for game details page */
+        .game-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+        .game-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+        .game-image img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+        .game-info {
+            flex: 2;
+            min-width: 300px;
+        }
+        .game-stats {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        .game-stat {
+            background-color: var(--background-light);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius);
+        }
+        .rulebook {
+            background-color: var(--background-light);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin-top: var(--spacing-xl);
+        }
+        .rulebook h3 {
+            color: var(--accent-color);
+            margin-bottom: var(--spacing-sm);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Include header from main page -->
+    </header>
+
+    <main class="container">
+        <div id="gameDetails" class="game-details">
+            <!-- Game details will be populated here -->
+        </div>
+    </main>
+
+    <footer>
+        <!-- Include footer from main page -->
+    </footer>
+
+    <script>
+        // Fetch and display game details
+        async function loadGameDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameId = urlParams.get('id');
+            
+            try {
+                const response = await fetch('games.json');
+                const data = await response.json();
+                const game = data.games.find(g => g.id === gameId);
+                
+                if (game) {
+                    const gameDetailsHtml = `
+                        <div class="game-image">
+                            <img src="${game.image}" alt="${game.title}">
+                        </div>
+                        <div class="game-info">
+                            <h1>${game.title}</h1>
+                            <p>${game.fullDescription}</p>
+                            <div class="game-stats">
+                                <div class="game-stat">
+                                    <strong>Players:</strong> ${game.playerCount}
+                                </div>
+                                <div class="game-stat">
+                                    <strong>Play Time:</strong> ${game.playTime}
+                                </div>
+                                <div class="game-stat">
+                                    <strong>Age:</strong> ${game.ageRange}
+                                </div>
+                            </div>
+                            <div class="rulebook">
+                                <h2>Rulebook</h2>
+                                ${game.rulebook.map(rule => `
+                                    <h3>${rule.section}</h3>
+                                    <p>${rule.content}</p>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                    document.getElementById('gameDetails').innerHTML = gameDetailsHtml;
+                } else {
+                    document.getElementById('gameDetails').innerHTML = '<p>Game not found</p>';
+                }
+            } catch (error) {
+                console.error('Error loading game details:', error);
+                document.getElementById('gameDetails').innerHTML = '<p>Error loading game details</p>';
+            }
+        }
+
+        loadGameDetails();
+    </script>
+</body>
+</html>

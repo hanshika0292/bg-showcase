@@ -1,0 +1,52 @@
+{
+  "games": [
+    {
+      "id": "bank-bailout-bonanza",
+      "title": "Bank Bailout Bonanza",
+      "shortDescription": "Experience the Great Recession as a banker or government official in this game.",
+      "fullDescription": "Bank Bailout Bonanza is an exciting economic strategy game that puts you in the shoes of key players during the Great Recession. As either a banker or government official, you'll navigate the treacherous waters of financial crisis, making crucial decisions that will shape the economy's future.",
+      "image": "assets/bank-bailout/main.png",
+      "playerCount": "3-6 players",
+      "playTime": "60-90 minutes",
+      "ageRange": "14+",
+      "rulebook": [
+        {
+          "section": "Setup",
+          "content": "1. Distribute bank cards to each player.\n2. Set up the central board with economic indicators.\n3. Shuffle and place the event deck."
+        },
+        {
+          "section": "Gameplay",
+          "content": "1. Each round, draw an event card and adjust economic indicators.\n2. Players take turns proposing bailouts or regulations.\n3. All players vote on each proposal.\n4. Implement approved actions and adjust bank standings."
+        },
+        {
+          "section": "Winning",
+          "content": "The game ends after a set number of rounds or when the economy stabilizes. The player with the most stability points wins!"
+        }
+      ]
+    },
+    {
+      "id": "chandni-chowk",
+      "title": "Chandni Chowk - Little India",
+      "shortDescription": "Step into the lively 1850s Chandni Chowk market, where entrepreneurs are transforming the district.",
+      "fullDescription": "Chandni Chowk - Little India transports you to the bustling markets of 1850s Delhi. As an ambitious entrepreneur, you'll navigate the intricate web of trade, politics, and culture to build your business empire in this historic district.",
+      "image": "assets/chandni-chowk/main.JPG",
+      "playerCount": "2-5 players",
+      "playTime": "90-120 minutes",
+      "ageRange": "12+",
+      "rulebook": [
+        {
+          "section": "Setup",
+          "content": "1. Lay out the market board.\n2. Each player chooses a merchant family and receives starting resources.\n3. Shuffle and place opportunity and event decks."
+        },
+        {
+          "section": "Gameplay",
+          "content": "1. Players take turns performing actions: buy goods, sell goods, invest in property, or network with influential figures.\n2. Each round, new opportunities and events affect the market.\n3. Players can form alliances and trade with each other."
+        },
+        {
+          "section": "Winning",
+          "content": "The game ends after a set number of rounds. The player with the most wealth and influence (calculated through a combination of money, property, and reputation) wins the game!"
+        }
+      ]
+    }
+  ]
+}
