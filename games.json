@@ -6,6 +6,14 @@
       "shortDescription": "Experience the Great Recession as a banker or government official in this game.",
       "fullDescription": "Bank Bailout Bonanza is an exciting economic strategy game that puts you in the shoes of key players during the Great Recession. As either a banker or government official, you'll navigate the treacherous waters of financial crisis, making crucial decisions that will shape the economy's future.",
       "image": "assets/bank-bailout/main.png",
+      "imageGallery": [
+        "assets/bank-bailout/main.png",
+        "assets/bank-bailout/bank bailout bonanza.png",
+        "assets/bank-bailout/Bear Hug Bank.png",
+        "assets/bank-bailout/Boom or Bust Bank.png",
+        "assets/bank-bailout/Money Mogul.png",
+        "assets/bank-bailout/gameplay.png",
+      ],
       "playerCount": "3-6 players",
       "playTime": "60-90 minutes",
       "ageRange": "14+",
@@ -22,7 +30,8 @@
           "section": "Winning",
           "content": "The game ends after a set number of rounds or when the economy stabilizes. The player with the most stability points wins!"
         }
-      ]
+      ],
+      "playLink": "https://bank-bailout-banter-52k5tvtjm-hanshika02.vercel.app/"
     },
     {
       "id": "chandni-chowk",
@@ -30,6 +39,12 @@
       "shortDescription": "Step into the lively 1850s Chandni Chowk market, where entrepreneurs are transforming the district.",
       "fullDescription": "Chandni Chowk - Little India transports you to the bustling markets of 1850s Delhi. As an ambitious entrepreneur, you'll navigate the intricate web of trade, politics, and culture to build your business empire in this historic district.",
       "image": "assets/chandni-chowk/main.JPG",
+      "imageGallery": [
+        "assets/chandni-chowk/main.JPG",
+        "assets/chandni-chowk/gameplay.JPG",
+        "assets/chandni-chowk/gameplay2.png",
+        "assets/chandni-chowk/tokens.PNG",
+      ],
       "playerCount": "2-5 players",
       "playTime": "90-120 minutes",
       "ageRange": "12+",
@@ -46,7 +61,59 @@
           "section": "Winning",
           "content": "The game ends after a set number of rounds. The player with the most wealth and influence (calculated through a combination of money, property, and reputation) wins the game!"
         }
-      ]
+      ],
+      "playLink": ""
+    },
+    {
+      "id": "think-again",
+      "title": "Think Again - Biases & Paradoxes",
+      "shortDescription": "Challenge your cognitive biases and explore paradoxes with Think Again!",
+      "fullDescription": "Challenge your cognitive biases and explore paradoxes with Think Again! This card game, similar to Monikers, offers a fun, interactive experience that promotes critical thinking and self-reflection.",
+      "image": "assets/think-again/main.png",
+      "imageGallery": [
+        "assets/think-again/main.png",
+        "assets/think-again/cards.png",
+      ],
+      "playerCount": "4-10 players",
+      "playTime": "10-20 minutes",
+      "ageRange": "12+",
+      "rulebook": [
+      ],
+      "playLink": "https://monikers-for-biases.glide.page/"
+    },
+    {
+      "id": "swaraj-saga-rpg",
+      "title": "Swaraj Saga: A Pre-Independence RPG Adventure",
+      "shortDescription": "Step back in time and immerse yourself in the world of pre-independence India",
+      "fullDescription": "Step back in time and immerse yourself in the world of pre-independence India, where freedom fighter Bhagat Singh has been kidnapped during the infamous Kakori train heist. As a participant in this thrilling RPG, you'll face numerous challenges and puzzles in a race against time to save Bhagat Singh.",
+      "image": "assets/swaraj-saga-rpg/main.png",
+      "imageGallery": [
+        "assets/swaraj-saga-rpg/main.png",
+        "assets/swaraj-saga-rpg/secondary.png",
+      ],
+      "playerCount": "3-10 players",
+      "playTime": "20-60 minutes",
+      "ageRange": "12+",
+      "rulebook": [
+      ],
+      "playLink": ""
+    },
+    {
+      "id": "wisdom-quest-rpg",
+      "title": "WisdomQuest RPG Game",
+      "shortDescription": "Discover 'Wisdom Quest', an innovative RPG around virtual learning community",
+      "fullDescription": "Discover 'Wisdom Quest', an innovative RPG built on Gather Town. This virtual learning community transforms education into an exciting adventure. Explore a rich digital campus, uncover hidden pathways, and solve clues to master academic concepts. Collaborate with peers, tackle subject-themed challenges, and grow your knowledge through interactive gameplay. Wisdom Quest makes learning a thrilling journey of discovery.",
+      "image": "assets/wisdom-quest-rpg/main.png",
+      "imageGallery": [
+        "assets/wisdom-quest-rpg/main.png",
+        "assets/wisdom-quest-rpg/screen2.png",
+      ],
+      "playerCount": "3-10 players",
+      "playTime": "20-40 minutes",
+      "ageRange": "12+",
+      "rulebook": [
+      ],
+      "playLink": ""
     }
   ]
 }
