@@ -12,7 +12,7 @@
         "assets/bank-bailout/Bear Hug Bank.png",
         "assets/bank-bailout/Boom or Bust Bank.png",
         "assets/bank-bailout/Money Mogul.png",
-        "assets/bank-bailout/gameplay.png",
+        "assets/bank-bailout/gameplay.png"
       ],
       "playerCount": "3-6 players",
       "playTime": "60-90 minutes",
@@ -43,7 +43,7 @@
         "assets/chandni-chowk/main.JPG",
         "assets/chandni-chowk/gameplay.JPG",
         "assets/chandni-chowk/gameplay2.png",
-        "assets/chandni-chowk/tokens.PNG",
+        "assets/chandni-chowk/tokens.PNG"
       ],
       "playerCount": "2-5 players",
       "playTime": "90-120 minutes",
@@ -72,7 +72,7 @@
       "image": "assets/think-again/main.png",
       "imageGallery": [
         "assets/think-again/main.png",
-        "assets/think-again/cards.png",
+        "assets/think-again/cards.png"
       ],
       "playerCount": "4-10 players",
       "playTime": "10-20 minutes",
@@ -89,7 +89,7 @@
       "image": "assets/swaraj-saga-rpg/main.png",
       "imageGallery": [
         "assets/swaraj-saga-rpg/main.png",
-        "assets/swaraj-saga-rpg/secondary.png",
+        "assets/swaraj-saga-rpg/secondary.png"
       ],
       "playerCount": "3-10 players",
       "playTime": "20-60 minutes",
@@ -106,7 +106,7 @@
       "image": "assets/wisdom-quest-rpg/main.png",
       "imageGallery": [
         "assets/wisdom-quest-rpg/main.png",
-        "assets/wisdom-quest-rpg/screen2.png",
+        "assets/wisdom-quest-rpg/screen2.png"
       ],
       "playerCount": "3-10 players",
       "playTime": "20-40 minutes",
