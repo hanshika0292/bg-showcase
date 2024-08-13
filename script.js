@@ -118,8 +118,7 @@ function createBlogCard(post) {
         <img src="${post.image || ''}" alt="${post.title || 'Blog post'}" class="blog-image">
         <div class="blog-content">
             <h3 class="blog-title">${post.title || 'Untitled'}</h3>
-            <p class="blog-description">${post.excerpt || 'No description available'}</p>
-            <p class="blog-meta">By ${post.author || 'Unknown'} on ${post.date || 'Unknown date'}</p>
+            <p class="blog-description">${post.description || 'No description available'}</p>
         </div>
     `;
     return card;
