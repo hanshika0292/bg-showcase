@@ -1,0 +1,25 @@
+{
+  "articles": [
+    {
+      "title": "Playing your Cards Right",
+      "description": "I recently went to an Apple store and while I was admiring the immaculate devices, I was told something by the store representative that would lead to several questions and revelations in my mind. Did you know that the angle at which a MacBook’s lid is opened in an Apple Store is optimized to invite and hook the customer? To see the screen properly, one has to lift the lid just a little bit, initiating the first introduction to the device in a clever manner. Not only have you touched the machine and felt a positive tactile stimulus, your interaction with the screen and keyboard is also likely to be more meaningful. This psychological trickery relies on our mind’s affinity for familiarity, ensuring that we have had at least one good interaction with the device.",
+      "link": "https://ludogogy.co.uk/playing-your-cards-right/",
+      "createdBy": "Hanshika Gupta",
+      "image": "assets/blog/playing-cards.jpg"
+    },
+    {
+      "title": "The Power of Compounding",
+      "description": "Engine-building games are reliant on making systems of resources that become more efficient and rewarding as the game carries on. As with any type of system, there is a cost of setting up, which is difficult to reason for when there is an alternative that brings immediate benefits.",
+      "link": "https://ludogogy.co.uk/the-power-of-compounding/",
+      "createdBy": "Hanshika Gupta",
+      "image": "assets/blog/compounding.png"
+    },
+    {
+      "title": "Elevate Your Next Puzzle Game",
+      "description": "Mobile games are shaping new user habits, and new genres have spawned to cater to these desires. Interestingly, the 2nd and 3rd categories are education and business respectively. Food for thought – given there is an indication that the greatest demand from phone apps is that of entertainment, learning, and productivity respectively, could there be a way to merge these in some way?",
+      "link": "https://ludogogy.co.uk/elevate-your-next-puzzle-game/",
+      "createdBy": "Hanshika Gupta",
+      "image": "assets/blog/puzzle-game.jpg"
+    }
+  ]
+}
