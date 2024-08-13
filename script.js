@@ -62,7 +62,7 @@ function createGameCard(game) {
         <img src="${game.image}" alt="${game.title}" class="game-image">
         <div class="game-info">
             <h3 class="game-title">${game.title}</h3>
-            <p class="game-description">${game.description}</p>
+            <p class="game-description">${game.shortDescription}</p>
             <a href="game-details.html?id=${game.id}" class="view-more">View More</a>
         </div>
     `;
