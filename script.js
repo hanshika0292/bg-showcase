@@ -114,16 +114,28 @@ function createBlogCard(post) {
     return card;
 }
 
+function setupMobileMenu() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const header = document.querySelector('header');
+
+    if (mobileMenuToggle && header) {
+        mobileMenuToggle.addEventListener('click', () => {
+            header.classList.toggle('mobile-menu-open');
+        });
+    }
+}
+
 // Load game details
 async function loadGameDetails(gameId) {
     try {
         const response = await fetch('games.json');
-        const games = await response.json();
-        const game = games.find(g => g.id === gameId);
+        const data = await response.json();
+        const game = data.games.find(g => g.id === gameId);
         
         if (game) {
+            document.getElementById('gameTitle').textContent = game.title;
             populateGameDetails(game);
-            createImageCarousel(game.images);
+            createImageCarousel(game.imageGallery);
         } else {
             console.error('Game not found');
         }
@@ -140,21 +152,35 @@ function populateGameDetails(game) {
     }
     
     gameDetails.innerHTML = `
-        <h1>${game.title}</h1>
-        <p>${game.description}</p>
-        <div class="game-stats">
-            <div class="game-stat">Players: ${game.players}</div>
-            <div class="game-stat">Duration: ${game.duration}</div>
-            <div class="game-stat">Age: ${game.age}+</div>
+        <img src="${game.image}" alt="${game.title}" class="game-image">
+        <div class="game-info">
+            <p>${game.fullDescription}</p>
+            <div class="game-stats">
+                <div class="game-stat">Players: ${game.playerCount}</div>
+                <div class="game-stat">Duration: ${game.playTime}</div>
+                <div class="game-stat">Age: ${game.ageRange}</div>
+            </div>
+            ${game.playLink ? `<a href="${game.playLink}" class="play-button" target="_blank">Play Now</a>` : ''}
         </div>
-        <a href="${game.playLink}" class="play-button">Play Now</a>
     `;
+
+    if (game.rulebook && game.rulebook.length > 0) {
+        const rulebookHtml = `
+            <div class="rulebook">
+                <h3>Rulebook</h3>
+                ${game.rulebook.map(rule => `
+                    <h4>${rule.section}</h4>
+                    <p>${rule.content}</p>
+                `).join('')}
+            </div>
+        `;
+        gameDetails.innerHTML += rulebookHtml;
+    }
 }
 
 function createImageCarousel(images) {
     const carousel = document.getElementById('imageCarousel');
-    if (!carousel) {
-        console.error('Carousel element not found');
+    if (!carousel || !images || images.length === 0) {
         return;
     }
     
@@ -167,17 +193,28 @@ function createImageCarousel(images) {
     `;
     
     // Add carousel functionality here
-}
+    let currentIndex = 0;
+    const carouselImages = carousel.querySelectorAll('.carousel img');
+    const prevButton = carousel.querySelector('.prev');
+    const nextButton = carousel.querySelector('.next');
 
-function setupMobileMenu() {
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const header = document.querySelector('header');
-
-    if (mobileMenuToggle && header) {
-        mobileMenuToggle.addEventListener('click', () => {
-            header.classList.toggle('mobile-menu-open');
+    function showImage(index) {
+        carouselImages.forEach((img, i) => {
+            img.style.display = i === index ? 'block' : 'none';
         });
     }
+
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
+        showImage(currentIndex);
+    });
+
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % carouselImages.length;
+        showImage(currentIndex);
+    });
+
+    showImage(currentIndex);
 }
 
 // Main function to initialize the page
@@ -199,9 +236,6 @@ async function initializePage() {
             await loadGameDetails(gameId);
         }
     }
-
-    setupMobileMenu();
-
 }
 
 // Call the main function when the DOM is fully loaded
