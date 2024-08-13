@@ -13,13 +13,14 @@ async function loadCommonElements() {
 }
 
 // Fetch and populate games
+// Fetch and populate games
 async function loadGames() {
     try {
         const response = await fetch('games.json');
-        const games = await response.json();
-        console.log('Fetched data:', games);
-        const gamesGrid = document.getElementById('gamesGrid');
+        const data = await response.json();
+        console.log('Fetched data:', data);
         
+        const gamesGrid = document.getElementById('gamesGrid');
         if (!gamesGrid) {
             console.error('Games grid element not found');
             return;
