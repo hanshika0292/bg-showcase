@@ -73,14 +73,35 @@ function createGameCard(game) {
 async function loadBlogPosts() {
     try {
         const response = await fetch('blog.json');
-        const posts = await response.json();
-        const blogGrid = document.getElementById('blogGrid');
+        const data = await response.json();
+        console.log('Fetched blog data:', data);
         
+        const blogGrid = document.getElementById('blogGrid');
         if (!blogGrid) {
             console.error('Blog grid element not found');
             return;
         }
         
+        let posts = data;
+        
+        // Check if the data is wrapped in an object
+        if (typeof data === 'object' && !Array.isArray(data)) {
+            // Try to find an array in the object
+            const arrayProperty = Object.values(data).find(prop => Array.isArray(prop));
+            if (arrayProperty) {
+                posts = arrayProperty;
+            } else {
+                console.error('Unable to find posts array in the JSON data');
+                return;
+            }
+        }
+        
+        // Ensure posts is an array
+        if (!Array.isArray(posts)) {
+            console.error('Blog posts data is not an array');
+            return;
+        }
+
         posts.forEach(post => {
             const blogCard = createBlogCard(post);
             blogGrid.appendChild(blogCard);
@@ -94,11 +115,11 @@ function createBlogCard(post) {
     const card = document.createElement('div');
     card.className = 'blog-card';
     card.innerHTML = `
-        <img src="${post.image}" alt="${post.title}" class="blog-image">
+        <img src="${post.image || ''}" alt="${post.title || 'Blog post'}" class="blog-image">
         <div class="blog-content">
-            <h3 class="blog-title">${post.title}</h3>
-            <p class="blog-description">${post.excerpt}</p>
-            <p class="blog-meta">By ${post.author} on ${post.date}</p>
+            <h3 class="blog-title">${post.title || 'Untitled'}</h3>
+            <p class="blog-description">${post.excerpt || 'No description available'}</p>
+            <p class="blog-meta">By ${post.author || 'Unknown'} on ${post.date || 'Unknown date'}</p>
         </div>
     `;
     return card;
