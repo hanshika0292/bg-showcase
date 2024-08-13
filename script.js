@@ -179,6 +179,17 @@ function createImageCarousel(images) {
     // Add carousel functionality here
 }
 
+function setupMobileMenu() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const header = document.querySelector('header');
+
+    if (mobileMenuToggle && header) {
+        mobileMenuToggle.addEventListener('click', () => {
+            header.classList.toggle('mobile-menu-open');
+        });
+    }
+}
+
 // Main function to initialize the page
 async function initializePage() {
     await loadCommonElements();
@@ -198,6 +209,9 @@ async function initializePage() {
             await loadGameDetails(gameId);
         }
     }
+
+    setupMobileMenu();
+
 }
 
 // Call the main function when the DOM is fully loaded
