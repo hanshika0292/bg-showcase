@@ -17,6 +17,7 @@ async function loadGames() {
     try {
         const response = await fetch('games.json');
         const games = await response.json();
+        console.log('Fetched data:', games);
         const gamesGrid = document.getElementById('gamesGrid');
         
         if (!gamesGrid) {
@@ -24,6 +25,26 @@ async function loadGames() {
             return;
         }
         
+        let games = data;
+        
+        // Check if the data is wrapped in an object
+        if (typeof data === 'object' && !Array.isArray(data)) {
+            // Try to find an array in the object
+            const arrayProperty = Object.values(data).find(prop => Array.isArray(prop));
+            if (arrayProperty) {
+                games = arrayProperty;
+            } else {
+                console.error('Unable to find games array in the JSON data');
+                return;
+            }
+        }
+        
+        // Ensure games is an array
+        if (!Array.isArray(games)) {
+            console.error('Games data is not an array');
+            return;
+        }
+
         games.forEach(game => {
             const gameCard = createGameCard(game);
             gamesGrid.appendChild(gameCard);
