@@ -330,7 +330,7 @@ footer {
 /* Game Details Styles */
 .game-details {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
 }
