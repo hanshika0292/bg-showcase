@@ -82,21 +82,8 @@ async function loadBlogPosts() {
             return;
         }
         
-        let posts = data;
+        const posts = data.articles;
         
-        // Check if the data is wrapped in an object
-        if (typeof data === 'object' && !Array.isArray(data)) {
-            // Try to find an array in the object
-            const arrayProperty = Object.values(data).find(prop => Array.isArray(prop));
-            if (arrayProperty) {
-                posts = arrayProperty;
-            } else {
-                console.error('Unable to find posts array in the JSON data');
-                return;
-            }
-        }
-        
-        // Ensure posts is an array
         if (!Array.isArray(posts)) {
             console.error('Blog posts data is not an array');
             return;
@@ -111,6 +98,7 @@ async function loadBlogPosts() {
     }
 }
 
+
 function createBlogCard(post) {
     const card = document.createElement('div');
     card.className = 'blog-card';
@@ -119,6 +107,8 @@ function createBlogCard(post) {
         <div class="blog-content">
             <h3 class="blog-title">${post.title || 'Untitled'}</h3>
             <p class="blog-description">${post.description || 'No description available'}</p>
+            <p class="blog-meta">By ${post.createdBy || 'Unknown'}</p>
+            <a href="${post.link}" class="read-more-button" target="_blank" rel="noopener noreferrer">Read More</a>
         </div>
     `;
     return card;
