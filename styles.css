@@ -93,7 +93,7 @@ padding: calc(var(--spacing-xl) * 2) 0 var(--spacing-xl);
 }
 
 .hero {
-background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/600');
+background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/background/sample.jpg');
 background-size: cover;
 background-position: center;
 height: 80vh;
