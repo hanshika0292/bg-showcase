@@ -132,7 +132,7 @@ main {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/background/sample.jpg');
     background-size: cover;
     background-position: center;
-    height: 40vh;
+    height: 30vh;
     display: flex;
     align-items: center;
     justify-content: center;
