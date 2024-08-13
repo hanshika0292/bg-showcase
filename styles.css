@@ -495,3 +495,51 @@ footer {
         transform: rotate(-45deg) translate(7px, -6px);
     }
 }
+
+
+/* Add this to your existing styles */
+
+body {
+    padding-top: 60px; /* Adjust this value based on your header height */
+}
+
+.page-header {
+    background-color: var(--background-light);
+    padding: var(--spacing-xl) 0;
+    margin-bottom: var(--spacing-xl);
+}
+
+.page-header h1 {
+    color: var(--text-light);
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.blog-section {
+    padding: var(--spacing-xl) 0;
+}
+
+/* Adjust the main padding */
+main {
+    padding: 0 0 var(--spacing-xl);
+}
+
+/* If you have a .hero class, you may want to adjust it for other pages */
+.hero {
+    margin-top: 60px; /* Same as body padding-top */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        padding-top: 50px; /* Adjust for smaller header on mobile */
+    }
+
+    .page-header {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+}
