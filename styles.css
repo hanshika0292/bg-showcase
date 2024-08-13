@@ -77,7 +77,7 @@ nav {
 }
 
 .logo, .footer-logo {
-    width: 100px; /* Reduced from 150px */
+    width: 50px; /* Reduced from 150px */
     height: auto;
     object-fit: contain;
     transition: transform var(--transition-fast);
