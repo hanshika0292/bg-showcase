@@ -3,24 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Walkman Lab Games</title>
-    <link rel="stylesheet" href="styles.css"/>
+    <title>Walkman Lab Games - Home</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <img src="assets/logo/1.png" alt="Walkman Lab" class="logo">
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#games">Our Games</a>
-                <a href="blog.html">Blog</a>
-                <a href="about.html">About Us</a>
-            </div>
-        </nav>
-    </header>
+    <!--#include file="header.html" -->
 
     <main>
-        <section class="hero">
+        <section id="home" class="hero">
             <div class="container">
                 <h1>Welcome to Walkman Lab Games</h1>
                 <p>Immerse yourself in our innovative and thought-provoking games that challenge your mind and perspective.</p>
@@ -28,110 +18,26 @@
             </div>
         </section>
 
-        <section id="games" class="container">
+        <section id="games" class="section container">
+            <h2>Our Games</h2>
             <div id="gamesGrid" class="games-grid">
-                <!-- <div class="game-card">
-                    <img src="assets/bank-bailout/main.png" alt="Bank Bailout Bonanza" class="game-image">
-                    <div class="game-info">
-                        <h2 class="game-title">Bank Bailout Bonanza</h2>
-                        <p class="game-description">Experience the Great Recession as a banker or government official in this game. Bid strategically to bail out banks and earn prestigious stability points.</p>
-                        <a href="#" class="view-more">View More</a>
-                    </div>
-                </div>
-                <div class="game-card">
-                    <img src="assets/chandni-chowk/main.JPG" alt="Chandni Chowk" class="game-image">
-                    <div class="game-info">
-                        <h2 class="game-title">Chandni Chowk - Little India</h2>
-                        <p class="game-description">Step into the lively 1850s Chandni Chowk market, where entrepreneurs are transforming the district. Navigate the bustling scene, building your business empire through smart investments and deals.</p>
-                        <a href="#" class="view-more">View More</a>
-                    </div>
-                </div>
-                <div class="game-card">
-                    <img src="assets/think-again/main.png" alt="Think Again" class="game-image">
-                    <div class="game-info">
-                        <h2 class="game-title">Think Again: Challenging Biases</h2>
-                        <p class="game-description">Challenge your cognitive biases and explore paradoxes with Think Again! This card game offers a fun, interactive experience that promotes critical thinking and self-reflection.</p>
-                        <a href="#" class="view-more">View More</a>
-                    </div>
-                </div>
-                <div class="game-card">
-                    <img src="assets/swaraj-saga-rpg/main.png" alt="Swaraj Saga" class="game-image">
-                    <div class="game-info">
-                        <h2 class="game-title">Swaraj Saga: Pre-Independence RPG</h2>
-                        <p class="game-description">Step back in time to pre-independence India. Freedom fighter Bhagat Singh has been kidnapped during the infamous Kakori train heist. Embark on a thrilling RPG adventure to save him.</p>
-                        <a href="#" class="view-more">View More</a>
-                    </div>
-                </div>
-                <div class="game-card">
-                    <img src="assets/wisdom-quest-rpg/main.png" alt="WisdomQuest" class="game-image">
-                    <div class="game-info">
-                        <h2 class="game-title">WisdomQuest RPG Game</h2>
-                        <p class="game-description">Discover "Wisdom Quest," an innovative RPG built on Gather Town. Transform education into an exciting adventure. Explore a rich digital campus, uncover hidden pathways, and solve puzzles.</p>
-                        <a href="#" class="view-more">View More</a>
-                    </div>
-                </div> -->
+                <!-- Game cards will be dynamically inserted here -->
+            </div>
+        </section>
 
-
+        <section class="subscribe">
+            <div class="container">
+                <h2>Join the Walkman Lab Community</h2>
+                <form>
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
             </div>
         </section>
     </main>
 
-    <section class="subscribe">
-        <div class="container">
-            <h2>Join the Walkman Lab Community</h2>
-            <form>
-                <input type="email" placeholder="Your email" required>
-                <button type="submit">Subscribe</button>
-            </form>
-        </div>
-    </section>
+    <!--#include file="footer.html" -->
 
-    <footer>
-        <div class="container footer-content">
-            <div>
-                <img src="assets/logo/2.png" alt="Walkman Lab" class="footer-logo" style="align-self: flex-start">
-                <p>Based in Bengaluru, India</p>
-                <div class="social-links">
-                    <a href="https://twitter.com/walkmanlab" aria-label="Twitter">Twitter</a>
-                    <a href="https://instagram.com/walkmanlab" aria-label="Instagram">Instagram</a>
-                </div>
-            </div>
-            <!-- <div class="footer-links"> -->
-              <!--   <h3>Company</h3>
-                <ul>
-                    <li><a href="#home">Home</a></li> -->
-                    <!-- <li><a href="#about">About</a></li> -->
-                    <!-- <li><a href="#blog">Blog</a></li> -->
-                <!-- </ul> -->
-            <!-- </div> -->
-        </div>
-    </footer>
-
-    <!-- Keep the existing footer and subscribe section -->
-
-    <script>
-        async function loadGames() {
-            try {
-                const response = await fetch('games.json');
-                const data = await response.json();
-                const gamesHtml = data.games.map(game => `
-                    <div class="game-card" onclick="location.href='game-details.html?id=${game.id}'">
-                        <img src="${game.image}" alt="${game.title}" class="game-image">
-                        <div class="game-info">
-                            <h2 class="game-title">${game.title}</h2>
-                            <p class="game-description">${game.shortDescription}</p>
-                            <a href="game-details.html?id=${game.id}" class="view-more">View More</a>
-                        </div>
-                    </div>
-                `).join('');
-                document.getElementById('gamesGrid').innerHTML = gamesHtml;
-            } catch (error) {
-                console.error('Error loading games:', error);
-                document.getElementById('gamesGrid').innerHTML = '<p>Error loading games</p>';
-            }
-        }
-
-        loadGames();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
