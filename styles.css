@@ -888,3 +888,89 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* Game Details Grid Styles */
+.game-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* ... (other styles remain the same) ... */
+
+.game-details-carousel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--background-light);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+}
+
+/* Image Carousel Styles */
+.carousel-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%; /* Maintain a 4:3 aspect ratio */
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+}
+
+.carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: var(--background-dark); /* Add a background color to fill empty space */
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    transition: background-color var(--transition-fast);
+    z-index: 10; /* Ensure buttons are above images */
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .game-details-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .carousel-container {
+        padding-bottom: 56.25%; /* 16:9 aspect ratio for mobile */
+    }
+}
