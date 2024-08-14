@@ -527,3 +527,127 @@ footer {
         transform: rotate(-45deg) translate(7px, -6px);
     }
 }
+
+
+/* Game Details Page Styles */
+.game-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+.game-details .game-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    align-self: center;
+}
+.game-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+.game-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-light);
+}
+.game-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+}
+.game-stat {
+    background-color: var(--background-light);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    color: var(--accent-color);
+}
+.play-button {
+    align-self: flex-start;
+    margin-top: var(--spacing-md);
+}
+.rulebook {
+    background-color: var(--background-light);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-xl);
+}
+.rulebook h3 {
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+}
+.rulebook h4 {
+    color: var(--text-light);
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.2rem;
+}
+.rulebook p {
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+/* Image Carousel Styles */
+.carousel-container {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    margin: var(--spacing-xl) auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+}
+.carousel {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    transition: background-color var(--transition-fast);
+}
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.carousel-button.prev {
+    left: 10px;
+}
+.carousel-button.next {
+    right: 10px;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .game-details {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .game-details .game-image {
+        flex: 1;
+        max-width: 50%;
+    }
+    .game-info {
+        flex: 1;
+    }
+}
