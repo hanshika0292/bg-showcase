@@ -164,17 +164,29 @@ function populateGameDetails(game) {
         </div>
     `;
 
-    if (game.rulebook && game.rulebook.length > 0) {
-        const rulebookHtml = `
-            <div class="rulebook">
-                <h3>Rulebook</h3>
-                ${game.rulebook.map(rule => `
-                    <h4>${rule.section}</h4>
-                    <p>${rule.content}</p>
-                `).join('')}
-            </div>
-        `;
-        gameDetails.innerHTML += rulebookHtml;
+    if (game.rulebook) {
+        if (typeof game.rulebook === 'string' && game.rulebook.endsWith('.html')) {
+            // If rulebook is a path to an HTML file
+            const rulebookHtml = `
+                <div class="rulebook">
+                    <h3>Rulebook</h3>
+                    <iframe src="${game.rulebook}" width="100%" height="600px" frameborder="0"></iframe>
+                </div>
+            `;
+            gameDetails.innerHTML += rulebookHtml;
+        } else if (Array.isArray(game.rulebook) && game.rulebook.length > 0) {
+            // If rulebook is an array of rule objects
+            const rulebookHtml = `
+                <div class="rulebook">
+                    <h3>Rulebook</h3>
+                    ${game.rulebook.map(rule => `
+                        <h4>${rule.section}</h4>
+                        <p>${rule.content}</p>
+                    `).join('')}
+                </div>
+            `;
+            gameDetails.innerHTML += rulebookHtml;
+        }
     }
 }
 
