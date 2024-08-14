@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Bailout Rules</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /*h1, h2 {
+            color: #2c3e50;
+        }*/
+        .rule-section {
+            margin-bottom: 20px;
+        }
+        .rule-list {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bank Bailout Rules</h1>
+
+    <div class="rule-section">
+        <h2>Objective</h2>
+        <p>Accumulate the most Stability Points (SP) by negotiating deals and making strategic decisions to prevent bank collapses.</p>
+    </div>
+
+    <div class="rule-section">
+        <h2>Gameplay</h2>
+        <ol class="rule-list">
+            <li><strong>Draw Phase:</strong> The active player draws the top card.</li>
+            <li><strong>Discussion Phase:</strong> Players discuss potential strategies and negotiations regarding the revealed bank for 30 seconds.</li>
+            <li><strong>Betting Phase:</strong> Players secretly decide their SP contribution towards saving the bank, up to their current SP total.</li>
+            <li><strong>Reveal Phase:</strong> Players reveal their bets simultaneously.</li>
+            <li><strong>Resolution Phase:</strong>
+                <ul>
+                    <li><strong>Bank Saved:</strong> If combined SPs ≥ bank's value, the bank is saved. The higher bidder gets the card's SP value. In case of tie, both gets half each.</li>
+                    <li><strong>Bank Collapses:</strong> If combined SPs < bank's value, the bank collapses and players lose their bet SPs.</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="rule-section">
+        <h2>End Game</h2>
+        <p>The game lasts 5 rounds. The player with the highest SP total wins.</p>
+    </div>
+</body>
+</html>
