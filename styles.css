@@ -661,3 +661,170 @@ footer {
     overflow: auto;
 }
 
+/* ... (previous styles remain unchanged) ... */
+
+/* Game Details Page Styles */
+.game-details-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.game-details-image {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.game-details-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.game-details-info {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.game-details-rulebook {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.game-details-carousel {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+/* Image Carousel Styles */
+.carousel-container {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+}
+
+.carousel {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    transition: background-color var(--transition-fast);
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+/* ... (previous styles remain unchanged) ... */
+
+/* Game Details Grid Styles */
+.game-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.game-details-image {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.game-details-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.game-details-info {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.game-details-rulebook {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.game-details-carousel {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+/* Image Carousel Styles */
+.carousel-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+}
+
+.carousel {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ... (rest of the carousel styles remain unchanged) ... */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .game-details-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+    }
+
+    .game-details-image,
+    .game-details-info,
+    .game-details-rulebook,
+    .game-details-carousel {
+        grid-column: 1 / 2;
+    }
+
+    .game-details-image { grid-row: 1 / 2; }
+    .game-details-info { grid-row: 2 / 3; }
+    .game-details-rulebook { grid-row: 3 / 4; }
+    .game-details-carousel { grid-row: 4 / 5; }
+}
+
+/* ... (rest of the styles remain unchanged) ... */

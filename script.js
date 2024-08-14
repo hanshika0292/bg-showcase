@@ -13,7 +13,6 @@ async function loadCommonElements() {
 }
 
 // Fetch and populate games
-// Fetch and populate games
 async function loadGames() {
     try {
         const response = await fetch('games.json');
@@ -98,7 +97,6 @@ async function loadBlogPosts() {
     }
 }
 
-
 function createBlogCard(post) {
     const card = document.createElement('div');
     card.className = 'blog-card';
@@ -126,16 +124,21 @@ function setupMobileMenu() {
 }
 
 // Load game details
-async function loadGameDetails(gameId) {
+async function loadGameDetails() {
     try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const gameId = urlParams.get('id');
+        if (!gameId) {
+            console.error('No game ID provided');
+            return;
+        }
+
         const response = await fetch('games.json');
         const data = await response.json();
         const game = data.games.find(g => g.id === gameId);
         
         if (game) {
-            document.getElementById('gameTitle').textContent = game.title;
             populateGameDetails(game);
-            createImageCarousel(game.imageGallery);
         } else {
             console.error('Game not found');
         }
@@ -145,78 +148,56 @@ async function loadGameDetails(gameId) {
 }
 
 function populateGameDetails(game) {
-    const gameDetails = document.getElementById('gameDetails');
-    if (!gameDetails) {
-        console.error('Game details element not found');
-        return;
-    }
-    
-    gameDetails.innerHTML = `
-        <img src="${game.image}" alt="${game.title}" class="game-image">
-        <div class="game-info">
-            <p>${game.fullDescription}</p>
-            <div class="game-stats">
-                <div class="game-stat">Players: ${game.playerCount}</div>
-                <div class="game-stat">Duration: ${game.playTime}</div>
-                <div class="game-stat">Age: ${game.ageRange}</div>
-            </div>
-            ${game.playLink ? `<a href="${game.playLink}" class="play-button" target="_blank">Play Now</a>` : ''}
-        </div>
-    `;
+    document.getElementById('gameTitle').textContent = game.title;
+    document.getElementById('gameSubtitle').textContent = game.title;
+    document.getElementById('gameDescription').textContent = game.fullDescription;
+    document.getElementById('mainGameImage').src = game.image;
+    document.getElementById('mainGameImage').alt = game.title;
 
+    document.getElementById('playerCount').textContent = `Players: ${game.playerCount}`;
+    document.getElementById('playTime').textContent = `Duration: ${game.playTime}`;
+    document.getElementById('ageRange').textContent = `Age: ${game.ageRange}`;
+
+    const playButton = document.getElementById('playButton');
+    if (game.playLink) {
+        playButton.href = game.playLink;
+        playButton.style.display = 'inline-block';
+    } else {
+        playButton.style.display = 'none';
+    }
+
+    const rulebookContent = document.getElementById('rulebookContent');
     if (game.rulebook) {
         if (typeof game.rulebook === 'string' && game.rulebook.endsWith('.html')) {
-            // If rulebook is a path to an HTML file
-            const rulebookHtml = `
-                <section>
-                <br/>
-                <div class="rulebook">
-                    <h3>Rulebook</h3>
-                    <iframe src="${game.rulebook}" width="100%" height="600px" frameborder="0"></iframe>
-                </div>
-                </section>
-            `;
-            gameDetails.innerHTML += rulebookHtml;
+            rulebookContent.innerHTML = `<iframe src="${game.rulebook}" width="100%" height="400px" frameborder="0"></iframe>`;
         } else if (Array.isArray(game.rulebook) && game.rulebook.length > 0) {
-            // If rulebook is an array of rule objects
-            const rulebookHtml = `
-                <div class="rulebook">
-                    <h3>Rulebook</h3>
-                    ${game.rulebook.map(rule => `
-                        <h4>${rule.section}</h4>
-                        <p>${rule.content}</p>
-                    `).join('')}
-                </div>
-            `;
-            gameDetails.innerHTML += rulebookHtml;
+            rulebookContent.innerHTML = game.rulebook.map(rule => `
+                <h4>${rule.section}</h4>
+                <p>${rule.content}</p>
+            `).join('');
         }
+    } else {
+        rulebookContent.innerHTML = '<p>Rulebook not available</p>';
     }
+
+    createImageCarousel(game.imageGallery);
 }
 
 function createImageCarousel(images) {
-    const carousel = document.getElementById('imageCarousel');
+    const carousel = document.querySelector('.carousel');
     if (!carousel || !images || images.length === 0) {
         return;
     }
     
-    carousel.innerHTML = `
-        <div class="carousel">
-            ${images.map(img => `<img src="${img}" alt="Game screenshot">`).join('')}
-        </div>
-        <button class="carousel-button prev">Previous</button>
-        <button class="carousel-button next">Next</button>
-    `;
+    carousel.innerHTML = images.map(img => `<img src="${img}" alt="Game screenshot">`).join('');
     
-    // Add carousel functionality here
     let currentIndex = 0;
-    const carouselImages = carousel.querySelectorAll('.carousel img');
-    const prevButton = carousel.querySelector('.prev');
-    const nextButton = carousel.querySelector('.next');
+    const carouselImages = carousel.querySelectorAll('img');
+    const prevButton = document.querySelector('.carousel-button.prev');
+    const nextButton = document.querySelector('.carousel-button.next');
 
     function showImage(index) {
-        carouselImages.forEach((img, i) => {
-            img.style.display = i === index ? 'block' : 'none';
-        });
+        carousel.style.transform = `translateX(-${index * 100}%)`;
     }
 
     prevButton.addEventListener('click', () => {
@@ -235,6 +216,7 @@ function createImageCarousel(images) {
 // Main function to initialize the page
 async function initializePage() {
     await loadCommonElements();
+    setupMobileMenu();
     
     if (document.getElementById('gamesGrid')) {
         await loadGames();
@@ -244,12 +226,8 @@ async function initializePage() {
         await loadBlogPosts();
     }
     
-    if (document.getElementById('gameDetails')) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const gameId = urlParams.get('id');
-        if (gameId) {
-            await loadGameDetails(gameId);
-        }
+    if (document.querySelector('.game-details-grid')) {
+        await loadGameDetails();
     }
 }
 

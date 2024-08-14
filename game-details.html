@@ -7,23 +7,43 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!--#include file="header.html" -->
-    <main>
+    <main role="main">
         <section class="page-header">
             <div class="container">
                 <h1 id="gameTitle">Game Title</h1>
             </div>
         </section>
+
         <section class="container">
-            <div id="gameDetails" class="game-details">
-                <!-- Game details will be dynamically inserted here -->
-            </div>
-            <div id="imageCarousel" class="carousel-container">
-                <!-- Image carousel will be dynamically inserted here -->
+            <div class="game-details-grid">
+                <div class="game-details-image">
+                    <img id="mainGameImage" src="" alt="Game Image">
+                </div>
+                <div class="game-details-info">
+                    <h2 id="gameSubtitle"></h2>
+                    <p id="gameDescription"></p>
+                    <div class="game-stats">
+                        <div id="playerCount" class="game-stat"></div>
+                        <div id="playTime" class="game-stat"></div>
+                        <div id="ageRange" class="game-stat"></div>
+                    </div>
+                    <a id="playButton" href="#" class="play-button" target="_blank">Play Now</a>
+                </div>
+                <div class="game-details-rulebook">
+                    <h3>Rulebook</h3>
+                    <div id="rulebookContent"></div>
+                </div>
+                <div class="game-details-carousel">
+                    <div id="imageCarousel" class="carousel-container">
+                        <div class="carousel"></div>
+                        <button class="carousel-button prev">❮</button>
+                        <button class="carousel-button next">❯</button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-    <!--#include file="footer.html" -->
+
     <script src="script.js"></script>
 </body>
 </html>
