@@ -168,10 +168,13 @@ function populateGameDetails(game) {
         if (typeof game.rulebook === 'string' && game.rulebook.endsWith('.html')) {
             // If rulebook is a path to an HTML file
             const rulebookHtml = `
+                <section>
+                <br/>
                 <div class="rulebook">
                     <h3>Rulebook</h3>
                     <iframe src="${game.rulebook}" width="100%" height="600px" frameborder="0"></iframe>
                 </div>
+                </section>
             `;
             gameDetails.innerHTML += rulebookHtml;
         } else if (Array.isArray(game.rulebook) && game.rulebook.length > 0) {
