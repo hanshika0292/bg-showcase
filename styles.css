@@ -539,10 +539,11 @@ footer {
 .game-details .game-image {
     width: 100%;
     max-width: 600px;
-    height: auto;
-    object-fit: cover;
-    border-radius: var(--border-radius);
+	height: 400px; /* Set a fixed height */
+	border-radius: var(--border-radius);
     align-self: center;
+    object-fit: contain;
+    background-color: var(--background-light); /* Add a background color to fill any empty space */
 }
 .game-info {
     display: flex;
@@ -646,8 +647,17 @@ footer {
     .game-details .game-image {
         flex: 1;
         max-width: 50%;
+		height: 300px; /* Adjust height for larger screens if needed */
     }
     .game-info {
         flex: 1;
     }
 }
+
+.rulebook iframe {
+    border: none;
+    width: 100%;
+    height: 600px; /* Adjust as needed */
+    overflow: auto;
+}
+
